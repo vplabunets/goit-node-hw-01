@@ -36,17 +36,6 @@ async function removeContact(contactId) {
   await writeContacts(updatedContacts);
 }
 
-// function addContact(name, email, phone) {
-//   const id = nanoid();
-//   const contactsPath = path.resolve("../goit-node-hw-01/db", "contacts.json");
-//   fs.appendFile(
-//     contactsPath,
-//     ` { id: nan name: ${name}, email: ${email}, phone: ${phone} }`,
-//     { encoding: "utf8" }
-//   )
-//     .then()
-//     .catch((err) => console.log(err.message));
-// }
 async function writeContacts(contacts) {
   await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 3));
 }
@@ -57,7 +46,6 @@ async function addContact(name, email, phone) {
   try {
     const contacts = await listContacts();
     contacts.push(contact);
-    // console.log(contacts);
     await writeContacts(contacts);
   } catch (error) {
     console.log(error);

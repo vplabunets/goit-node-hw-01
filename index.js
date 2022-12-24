@@ -13,7 +13,8 @@ async function invokeAction({ action, id, name, email, phone }) {
       console.table(contacts);
       break;
     case "get":
-      await getContactById(id);
+      const contact = await getContactById(id);
+      console.log(contact);
       break;
     case "remove":
       await removeContact(id);

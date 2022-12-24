@@ -5,10 +5,9 @@ const path = require("path");
 const contactsPath = path.resolve("../goit-node-hw-01/db", "contacts.json");
 
 async function listContacts() {
-  const contactsRaw = await fs.readFile(contactsPath, { encoding: "utf8" });
   try {
+    const contactsRaw = await fs.readFile(contactsPath, { encoding: "utf8" });
     const contacts = JSON.parse(contactsRaw);
-    // console.table(contacts);
     return contacts;
   } catch (error) {
     console.log(error);
@@ -18,11 +17,11 @@ async function listContacts() {
 async function getContactById(contactId) {
   try {
     const contacts = await listContacts();
-    const contactById = await contacts.filter(
+    const contactById = await contacts.find(
       (contact) => contact.id === contactId.toString()
     );
-    console.log(contactById[0]);
-    return contactById[0];
+
+    return contactById;
   } catch (error) {
     console.log(error);
   }
